@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KYC Sign Up</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-blue-200 to-purple-300 min-h-screen flex flex-col">
+  <!-- Navbar -->
+  <nav class="bg-white shadow-lg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center py-4">
+        <!-- Logo -->
+        <div class="text-2xl font-bold text-purple-500">KYC</div>
+        <!-- Navigation Links -->
+        <ul class="hidden md:flex space-x-6 text-gray-600 font-semibold">
+          <li><a href="#" class="hover:text-purple-500">Home</a></li>
+          <li><a href="#contact" class="hover:text-purple-500">Contact</a></li>
+          <li><a href="#about" class="hover:text-purple-500">About</a></li>
+        </ul>
+        <!-- Mobile Menu Button -->
+        <div class="md:hidden">
+          <button id="menuButton" class="text-gray-600 focus:outline-none">
+            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+      </div>
+      <!-- Mobile Menu -->
+      <ul id="mobileMenu" class="hidden flex-col space-y-4 text-gray-600 font-semibold md:hidden">
+        <li><a href="#" class="hover:text-purple-500">Home</a></li>
+        <li><a href="#contact" class="hover:text-purple-500">Contact</a></li>
+        <li><a href="#about" class="hover:text-purple-500">About</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="flex-grow flex items-center justify-center px-4">
+    <div class="bg-white p-6 md:p-8 rounded-lg shadow-lg w-full max-w-md">
+      <h1 class="text-3xl font-bold text-center text-gray-800 mb-2">KYC Sign Up Form</h1>
+      <p class="text-center text-gray-600 mb-6">Fill in the details below to Delete your kyc account.</p>
+      <form id="signupForm" class="space-y-4">
+        <div>
+          <label for="idNumber" class="block text-gray-700 font-semibold">ID Number</label>
+          <input type="text" id="idNumber" class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring focus:ring-purple-300" required>
+        </div>
+        <div>
+          <label for="email" class="block text-gray-700 font-semibold">Email</label>
+          <input type="email" id="email" class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring focus:ring-purple-300" required>
+        </div>
+        <div>
+          <label for="phone" class="block text-gray-700 font-semibold">Phone Number</label>
+          <input type="tel" id="phone" class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring focus:ring-purple-300" required>
+        </div>
+        <div>
+          <label for="password" class="block text-gray-700 font-semibold">Password</label>
+          <input type="password" id="password" class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring focus:ring-purple-300" required>
+        </div>
+        <button
+          type="button"
+          id="signupButton"
+          class="w-full bg-purple-500 text-white py-2 px-4 rounded hover:bg-purple-600 transition duration-300 flex justify-center items-center">
+          <span>Delete Account</span>
+          <span id="loadingSpinner" class="hidden ml-2 animate-spin h-5 w-5 border-2 border-t-white border-purple-500 rounded-full"></span>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-white py-4 text-center text-gray-600">
+    &copy; 2024 KYC. All Rights Reserved.
+  </footer>
+
+  <script>
+    const signupButton = document.getElementById("signupButton");
+    const loadingSpinner = document.getElementById("loadingSpinner");
+    const menuButton = document.getElementById("menuButton");
+    const mobileMenu = document.getElementById("mobileMenu");
+
+    // Toggle Mobile Menu
+    menuButton.addEventListener("click", () => {
+      mobileMenu.classList.toggle("hidden");
+    });
+
+    signupButton.addEventListener("click", () => {
+      // Show loading spinner
+      loadingSpinner.classList.remove("hidden");
+      signupButton.setAttribute("disabled", true);
+
+      // Simulate loading delay
+      setTimeout(() => {
+        loadingSpinner.classList.add("hidden");
+        signupButton.removeAttribute("disabled");
+
+        // Ask for confirmation
+        const confirmed = confirm("Are you sure you want to sign up?");
+        if (confirmed) {
+          window.location.href = "/success"; // Redirect to success page
+        }
+      }, 2000); // 2-second delay
+    });
+  </script>
+</body>
+</html>
