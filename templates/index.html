@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>KYC Sign Up</title>
+  <title>KYC Delete Account </title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gradient-to-br from-blue-200 to-purple-300 min-h-screen flex flex-col">
@@ -40,7 +40,7 @@
   <!-- Main Content -->
   <div class="flex-grow flex items-center justify-center px-4">
     <div class="bg-white p-6 md:p-8 rounded-lg shadow-lg w-full max-w-md">
-      <h1 class="text-3xl font-bold text-center text-gray-800 mb-2">KYC Sign Up Form</h1>
+      <h1 class="text-3xl font-bold text-center text-gray-800 mb-2">KYC Delete Account Form</h1>
       <p class="text-center text-gray-600 mb-6">Fill in the details below to Delete your kyc account.</p>
       <form id="signupForm" class="space-y-4">
         <div>
@@ -97,7 +97,7 @@
         signupButton.removeAttribute("disabled");
 
         // Ask for confirmation
-        const confirmed = confirm("Are you sure you want to sign up?");
+        const confirmed = confirm("Are you sure you want to Delete Account?");
         if (confirmed) {
           window.location.href = "/success"; // Redirect to success page
         }
